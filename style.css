@@ -1,0 +1,160 @@
+/* Reset default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #1E2A47, #2C3E6E); /* Dark blue sky gradient */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+}
+
+/* Floating background objects */
+.sun, .moon, .cloud {
+    position: absolute;
+    animation-timing-function: linear;
+    z-index: -1; /* Ensures background objects are behind the form */
+}
+
+.sun {
+    width: 150px;
+    height: 150px;
+    background: url('{{ url_for("static", filename="sun.png") }}') no-repeat center center;
+    background-size: contain;
+    top: 10%;
+    left: -200px;
+    animation: floatSun 20s infinite;
+}
+
+.moon {
+    width: 100px;
+    height: 100px;
+    background: url('{{ url_for("static", filename="moon.png") }}') no-repeat center center;
+    background-size: contain;
+    top: 10%;
+    left: 100%;
+    animation: floatMoon 30s infinite;
+}
+
+.cloud {
+    width: 200px;
+    height: 100px;
+    background: url('{{ url_for("static", filename="cloud.png") }}') no-repeat center center;
+    background-size: contain;
+    top: 20%;
+    left: -300px;
+    animation: floatCloud 15s infinite;
+}
+
+/* Animations for floating */
+@keyframes floatSun {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100vw); /* Move sun across the screen */
+    }
+}
+
+@keyframes floatMoon {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100vw); /* Move moon across the screen */
+    }
+}
+
+@keyframes floatCloud {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100vw); /* Move clouds across the screen */
+    }
+}
+
+/* Form container styling */
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+    z-index: 10; /* Ensures the form is above the background */
+}
+
+/* Title styling */
+h1 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form inputs styling */
+input[type="number"], input[type="date"], select, button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Hover effects on inputs */
+input[type="number"]:hover, input[type="date"]:hover, select:hover, button:hover {
+    transform: scale(1.05);
+}
+
+/* Button styling */
+button {
+    background-color: #FF6347;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #FF4500;
+}
+
+/* Prediction result styling */
+h2 {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+@keyframes floatCloud {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100vw); /* Move clouds across the screen */
+    }
+}

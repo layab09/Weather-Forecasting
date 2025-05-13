@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Prediction</h1>
+        <form action="/predict" method="POST">
+            <!-- Location Dropdown -->
+            <label for="location">Select Location:</label>
+            <select name="location" required>
+                <option value="">-- Select Location --</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Lucknow">Lucknow</option>
+            </select>
+            
+            <!-- Other inputs for weather prediction -->
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" name="temperature" step="any" required>
+            
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" name="humidity" step="any" required>
+            
+            <label for="pressure">Pressure (hPa):</label>
+            <input type="number" name="pressure" step="any" required>
+            
+            <label for="wind_speed">Wind Speed (km/h):</label>
+            <input type="number" name="wind_speed" step="any" required>
+
+            <!-- Date input -->
+            <label for="date">Select Date:</label>
+            <input type="date" name="date" required>
+
+            <button type="submit">Predict Weather</button>
+        </form>
+
+        <!-- Show prediction result -->
+        {% if prediction %}
+            <h2>Prediction for {{ date }}: {{ prediction }} with a temperature of {{ temperature }}°C</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
+
